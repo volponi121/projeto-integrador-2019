@@ -6,7 +6,7 @@
     1.1-Instalar o git (https://git-scm.com/)
     1.2-Instalar o vsCode(Editor de texto https://code.visualstudio.com/)
     1.3-Instalar o nodeJs(https://nodejs.org/en/  Ultima versão LTS)
-    1.4-Instalar o docker(Vamos usar uma imagem docker do banco MONGODB, ainda será criada(https://docs.docker.com/docker-for-windows/))
+    1.4-Instalar o docker(Vamos usar uma imagem docker do banco MONGODB, ainda será criada(https://docs.docker.com/docker-for-  windows/))
     
 #2.Configurando o git
     2.1-Clonar o projeto https://github.com/volponi121/projeto-integrador-2019.git 
@@ -21,7 +21,7 @@
     no caso feature/011 -> feature.
     2.7-Caso seu pull request for aprovado, automaticamente o que você fez entra na feature.
     2.8- depois de entrar na feature, os dois administradores do projeto vão dar o pull da feature para a master, assim mantendo a 		 master funcionando.
-    *2.9-*IMPORTANTE* Caso houver conflito para a feature, você deve criar uma outra branch, com a tag a mais de merge 	   			  ex(feature/011_merge) fazer um pull 
+    *2.9-*IMPORTANTE* Caso houver conflito para a feature, você deve criar uma outra branch, com a tag a mais de merge 			  ex(feature/011_merge) fazer um pull 
     da sua feature que deu conflito feature/011 resolver os conflitos, e fazer um pull request da feature/011_merge para a feature.
 #3.Teamplate
     3.1-Vamos usar o teamplate pronto que o professor FabioRogerioSj disponibilizou para a gente usar de base.
