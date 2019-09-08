@@ -8,11 +8,11 @@
 		<version>2.1.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.projeto-integrador-2019</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>br.com.projeto-integrador2019</groupId>
+	<artifactId>ProjetoIntegrador</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>ProjetoIntegrador</name>
+	<description>Projeto Integrador 2019</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -42,11 +42,6 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
