@@ -28,16 +28,16 @@ ALTER TABLE CIDADE ADD CONSTRAINT FK_ESTADO_CIDADE FOREIGN KEY (fk_idEstado) REF
 
 CREATE TABLE ENDERECO (
     id int not null,
-    fk_idPais int,
+    fk_idCidade int,
     rua varchar(150) not null,
-    numero int,
+    numero varchar(15),
     logradouro varchar(150),
-    cep int,
+    cep varchar(15),
     bairro varchar(150)
 );
 
 ALTER TABLE ENDERECO ADD CONSTRAINT PK_ENDERECO PRIMARY KEY (ID);
-ALTER TABLE ENDERECO ADD CONSTRAINT FK_PAIS_ENDERECO FOREIGN KEY (fk_idPais) REFERENCES PAIS(id);
+ALTER TABLE ENDERECO ADD CONSTRAINT FK_CIDADE_ENDERECO FOREIGN KEY (fk_idCidade) REFERENCES CIDADE(id);
 
 CREATE TABLE USUARIO (
     id int not null,
@@ -45,23 +45,11 @@ CREATE TABLE USUARIO (
     data_nascimento date not null,
     data_criacao_conta date not null,
     cpf int,
-    fk_idUsuarioEndereco int not null
-);
-
-ALTER TABLE USUARIO ADD CONSTRAINT PK_USUARIO PRIMARY KEY (ID);
-
-CREATE TABLE Usuario_Endereco (
-    id int not null,
-    fk_idUsuario int not null,
     fk_idEndereco int not null
 );
 
-ALTER TABLE Usuario_Endereco ADD CONSTRAINT PK_Usuario_Endereco PRIMARY KEY (ID);
-
-
-ALTER TABLE USUARIO ADD CONSTRAINT FK_USUARIOEND_ENDERECO FOREIGN KEY (fk_idUsuarioEndereco) REFERENCES Usuario_Endereco(id);
-ALTER TABLE Usuario_Endereco ADD CONSTRAINT FK_USUARIO_USUARIOEND FOREIGN KEY (fk_idUsuario) REFERENCES USUARIO(id);
-ALTER TABLE Usuario_Endereco ADD CONSTRAINT FK_ENDERECO_USUARIOEND FOREIGN KEY (fk_idEndereco) REFERENCES ENDERECO(id);
+ALTER TABLE USUARIO ADD CONSTRAINT PK_USUARIO PRIMARY KEY (ID);
+ALTER TABLE USUARIO ADD CONSTRAINT fk_idEndereco FOREIGN KEY (fk_idEndereco) REFERENCES ENDERECO(id);
 
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------
