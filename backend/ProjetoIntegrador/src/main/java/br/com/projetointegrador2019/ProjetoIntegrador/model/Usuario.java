@@ -2,6 +2,8 @@ package br.com.projetointegrador2019.ProjetoIntegrador.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "USUARIO")
@@ -37,9 +37,9 @@ public class Usuario implements Serializable {
 	@Column(name = "cpf")
 	private Integer cpf;
 
-	@OneToOne
-	@JoinColumn(name = "fk_idEndereco", unique = true, nullable = false)
-	private Endereco endereco;
+	@OneToMany
+	@JoinColumn(name = "fk_idUsuario", unique = true, nullable = false)
+	private Set<Endereco> enderecos = new HashSet<>();
 
 	@Override
 	public int hashCode() {
@@ -48,7 +48,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((dataCriacaoConta == null) ? 0 : dataCriacaoConta.hashCode());
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
-		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
+		result = prime * result + ((enderecos == null) ? 0 : enderecos.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
@@ -78,10 +78,10 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!dataNascimento.equals(other.dataNascimento))
 			return false;
-		if (endereco == null) {
-			if (other.endereco != null)
+		if (enderecos == null) {
+			if (other.enderecos != null)
 				return false;
-		} else if (!endereco.equals(other.endereco))
+		} else if (!enderecos.equals(other.enderecos))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -136,12 +136,12 @@ public class Usuario implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public Set<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setEnderecos(Set<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 }

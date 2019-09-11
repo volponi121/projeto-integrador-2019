@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,11 +34,7 @@ public class Endereco implements Serializable {
 
 	@Column(name = "bairro", length = 150)
 	private String bairro;
-	
-	@OneToOne
-	@JoinColumn(name = "fk_idCidade", unique = true, nullable = false)
-	private Cidade cidade;
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

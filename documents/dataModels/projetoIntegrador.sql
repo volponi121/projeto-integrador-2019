@@ -33,24 +33,23 @@ CREATE TABLE ENDERECO (
     numero varchar(15),
     logradouro varchar(150),
     cep varchar(15),
-    bairro varchar(150)
+    bairro varchar(150),
+    fk_idUsuario int
 );
 
 ALTER TABLE ENDERECO ADD CONSTRAINT PK_ENDERECO PRIMARY KEY (ID);
 ALTER TABLE ENDERECO ADD CONSTRAINT FK_CIDADE_ENDERECO FOREIGN KEY (fk_idCidade) REFERENCES CIDADE(id);
+ALTER TABLE ENDERECO ADD CONSTRAINT FK_USUARIO FOREIGN KEY (fk_idUsuario) REFERENCES USUARIO(id);
 
 CREATE TABLE USUARIO (
     id int not null,
     nome varchar(80) not null,
     data_nascimento date not null,
     data_criacao_conta date not null,
-    cpf int,
-    fk_idEndereco int not null
+    cpf int
 );
 
 ALTER TABLE USUARIO ADD CONSTRAINT PK_USUARIO PRIMARY KEY (ID);
-ALTER TABLE USUARIO ADD CONSTRAINT fk_idEndereco FOREIGN KEY (fk_idEndereco) REFERENCES ENDERECO(id);
-
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------    Criando Campanha e personagens     ------------------------------------------------------------------------------
@@ -58,7 +57,8 @@ ALTER TABLE USUARIO ADD CONSTRAINT fk_idEndereco FOREIGN KEY (fk_idEndereco) REF
 
 CREATE TABLE CLASSE (
     id int not null,
-    nome varchar(50) not null
+    nome varchar(50) not null,
+    descricao varchar(3000)
 );
 
 ALTER TABLE CLASSE ADD CONSTRAINT PK_CLASSE PRIMARY KEY (ID);
@@ -66,7 +66,7 @@ ALTER TABLE CLASSE ADD CONSTRAINT PK_CLASSE PRIMARY KEY (ID);
 CREATE TABLE BOSS (
     id int not null,
     nome varchar(50) not null,
-    fk_idClasse int
+    descricao varchar(3000)
 );
 
 ALTER TABLE BOSS ADD CONSTRAINT PK_BOSS PRIMARY KEY (ID);
@@ -75,22 +75,21 @@ ALTER TABLE BOSS ADD CONSTRAINT FK_CLASSE_BOSS FOREIGN KEY (fk_idClasse) REFEREN
 CREATE TABLE CAMPANHA ( 
     id int not null,
     historia_campanha varchar(3000) not null,
-    tempo_estimado int not null,
-    fk_idBoss int
+    tempo_estimado int not null
 );
 
 ALTER TABLE CAMPANHA ADD CONSTRAINT PK_CAMPANHA PRIMARY KEY (ID);
 ALTER TABLE CAMPANHA ADD CONSTRAINT FK_BOSS_CAMPANHA FOREIGN KEY (fk_idBoss) REFERENCES BOSS(id);
 
-create table BOSS_CLASSE(
+create table BOSS_CAMPANHA(
     id int not null,
     fk_idBoss int,
-    fk_idClasse int
+    fk_idCampanha int
 );
 
-ALTER TABLE BOSS_CLASSE ADD CONSTRAINT PK_BOSS_CLASSE PRIMARY KEY (ID);
-ALTER TABLE BOSS_CLASSE ADD CONSTRAINT FK_BOSS_BOSSCLASSE FOREIGN KEY (fk_idBoss) REFERENCES BOSS(id);
-ALTER TABLE BOSS_CLASSE ADD CONSTRAINT FK_CLASSE_BOSSCLASSE FOREIGN KEY (fk_idClasse) REFERENCES CLASSE(id);
+ALTER TABLE BOSS_CAMPANHA ADD CONSTRAINT PK_BOSS_CAMPANHA PRIMARY KEY (ID);
+ALTER TABLE BOSS_CAMPANHA ADD CONSTRAINT FK_BOSS_BOSSCAMPANHA FOREIGN KEY (fk_idBoss) REFERENCES BOSS(id);
+ALTER TABLE BOSS_CAMPANHA ADD CONSTRAINT FK_CAMPANHA_BOSSCAMPANHA FOREIGN KEY (fk_idCampanha) REFERENCES CAMPANHA(id);
 
 
 CREATE TABLE PERSONAGEM (

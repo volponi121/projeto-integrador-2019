@@ -1,8 +1,8 @@
 package br.com.projetointegrador2019.ProjetoIntegrador.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +29,7 @@ public class Pais implements Serializable {
 
 	@OneToMany
 	@JoinColumn(name = "fk_idPais")
-	private List<Estado> estados = new ArrayList<>();
+	private Set<Estado> estados = new HashSet<>();
 
 	@Override
 	public int hashCode() {
@@ -78,11 +78,11 @@ public class Pais implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Estado> getEstados() {
+	public Set<Estado> getEstados() {
 		return estados;
 	}
 
-	public void setEstados(List<Estado> estados) {
+	public void setEstados(Set<Estado> estados) {
 		this.estados = estados;
 	}
 
