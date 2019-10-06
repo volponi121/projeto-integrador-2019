@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "USUARIO")
 public class Usuario implements Serializable {
@@ -27,10 +29,12 @@ public class Usuario implements Serializable {
 
 	@Column(name = "nome", length = 80, nullable = false)
 	private String nome;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Column(name = "data_nascimento", nullable = false)
 	private LocalDate dataNascimento;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Column(name = "data_criacao_conta", nullable = false)
 	private LocalDate dataCriacaoConta;
 

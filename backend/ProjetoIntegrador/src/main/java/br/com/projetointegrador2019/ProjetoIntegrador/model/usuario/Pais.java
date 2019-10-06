@@ -30,7 +30,8 @@ public class Pais implements Serializable {
 	@OneToMany
 	@JoinColumn(name = "fk_idPais")
 	private Set<Estado> estados = new HashSet<>();
-
+	
+	@OneToMany
 	@JoinColumn(name = "fk_idEstado")
 	private Set<Cidade> cidades = new HashSet<>();
 
