@@ -75,6 +75,7 @@ ALTER TABLE BOSS ADD CONSTRAINT PK_BOSS PRIMARY KEY (ID);
 
 CREATE TABLE CAMPANHA ( 
     id int not null,
+    nome_campanha varchar(150) not null,
     historia_campanha varchar(3000) not null,
     tempo_estimado int not null
 );

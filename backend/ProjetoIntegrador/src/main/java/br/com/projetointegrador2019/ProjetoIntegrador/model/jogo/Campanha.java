@@ -20,15 +20,18 @@ import javax.persistence.Table;
 public class Campanha implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
-	
+
+	@Column(name = "nome_campanha", length = 150, nullable = false)
+	private String nomeCampanha;
+
 	@Column(name = "historia_campanha", length = 3000, nullable = false)
 	private String historiaCampanha;
-	
+
 	@Column(name = "tempo_estimado")
 	private LocalDateTime tempoEstimado;
 
@@ -48,6 +51,14 @@ public class Campanha implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNomeCampanha() {
+		return nomeCampanha;
+	}
+
+	public void setNomeCampanha(String nomeCampanha) {
+		this.nomeCampanha = nomeCampanha;
 	}
 
 	public String getHistoriaCampanha() {
@@ -89,6 +100,7 @@ public class Campanha implements Serializable {
 		result = prime * result + ((campanhasBosses == null) ? 0 : campanhasBosses.hashCode());
 		result = prime * result + ((historiaCampanha == null) ? 0 : historiaCampanha.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nomeCampanha == null) ? 0 : nomeCampanha.hashCode());
 		result = prime * result + ((personagens == null) ? 0 : personagens.hashCode());
 		result = prime * result + ((tempoEstimado == null) ? 0 : tempoEstimado.hashCode());
 		return result;
@@ -117,6 +129,11 @@ public class Campanha implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (nomeCampanha == null) {
+			if (other.nomeCampanha != null)
+				return false;
+		} else if (!nomeCampanha.equals(other.nomeCampanha))
 			return false;
 		if (personagens == null) {
 			if (other.personagens != null)

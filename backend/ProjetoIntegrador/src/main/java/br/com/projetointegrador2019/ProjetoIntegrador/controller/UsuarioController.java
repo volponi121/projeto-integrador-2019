@@ -21,7 +21,7 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	
-	@PostMapping("/novo")
+	@PostMapping("/new")
 	public ResponseEntity<String> newUsuario(@Valid @RequestBody Usuario novoUsuario){
 		if(usuarioService.findByLogin(novoUsuario.getLogin()) != null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Usuário já cadastrado.");
@@ -29,4 +29,6 @@ public class UsuarioController {
 		usuarioService.save(novoUsuario);
 		return ResponseEntity.status(HttpStatus.OK).body("Usuário cadastrado com sucesso.");
 	}
+	
+	
 }
